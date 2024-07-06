@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Craft Manager</title>
+
+    <link rel="stylesheet" href="{% static 'style/style.css' %}"/>
+</head>
+<body>
+<p>----------------------------------------------------------------</p>
+<h3><a href="/">Menu Główne</a> - <a href="/new_craft/">Nowy Craft</a> - <a href="/accreditation/">Akredytacja</a></h3>
+<p>----------------------------------------------------------------</p>
+<h1>Lista Labów</h1>
+
+<table style="width:100%">
+    <tr>
+        <th>Laboratorium</th>
+        <th>Kolba okrągła z płaskim dnem</th>
+        <th>Kolba stożkowa</th>
+        <th>Pipeta</th>
+        <th>Próbówka</th>
+        <th>Zlewka</th>
+        <th>Butla z gwintem</th>
+        <th>Butla z króćcem</th>
+        <th>Krystalizator</th>
+        <th>Lejek</th>
+        <th>Szalka Petriego</th>
+        <th>Szkło zegarowe</th>
+        <th>Cylinder wysoki z korkiem</th>
+    </tr>
+    {% for lab in labs %}
+        <tr>
+            <td>{{ lab.name }}</td>
+            <td>{{ lab.flat_flask }}</td>
+            <td>{{ lab.conical_flask }}</td>
+            <td>{{ lab.pipette }}</td>
+            <td>{{ lab.test_tube }}</td>
+            <td>{{ lab.beaker }}</td>
+            <td>{{ lab.threaded_bottle }}</td>
+            <td>{{ lab.cylinder_with_spigot }}</td>
+            <td>{{ lab.crystalizer }}</td>
+            <td>{{ lab.funnel }}</td>
+            <td>{{ lab.petri_dish }}</td>
+            <td>{{ lab.watch_glass }}</td>
+            <td>{{ lab.high_cylinder_with_plug }}</td>
+        </tr>
+    {% empty %}
+        <td>Brak labów</td>
+    {% endfor %}
+</table>
+
+</body>
+</html>

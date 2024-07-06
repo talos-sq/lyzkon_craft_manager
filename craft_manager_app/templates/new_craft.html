@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Craft Manager</title>
+
+    <link rel="stylesheet" href="{% static 'style/style.css' %}"/>
+</head>
+<body>
+<p>----------------------------------------------------------------</p>
+<h3><a href="/">Menu Główne</a> - <a href="/lab_list/">Spis Labów</a> - <a href="/accreditation/">Akredytacja</a></h3>
+<p>----------------------------------------------------------------</p>
+<h1>Nowy Craft</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="lab">Laboratorium:</label>
+    <select id="lab" name="lab">
+        {% for lab in labs %}
+            <option value={{ lab.name }}>{{ lab.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="item">Przedmiot:</label>
+    <select id="item" name="item">
+        <option value="antidotum">Antidotum</option>
+        <option value="antybiotyk">Antybiotyk</option>
+        <option value="hypno">Hypno</option>
+        <option value="med_x">Med-X</option>
+        <option value="narkotyk">Narkotyk</option>
+        <option value="radaway">Radaway</option>
+        <option value="rad_x">Rad-X</option>
+        <option value="serum_prawdy">Serum Prawdy</option>
+        <option value="stimpak">Stimpak</option>
+        <option value="sstimpak">Super Stimpak</option>
+        <option value="szpryca">Szpryca</option>
+        <option value="spiulkolot">Śpiulkolot</option>
+        <option value="trucizna">Trucizna</option>
+    </select>
+
+    <input type="submit" value="Dodaj">
+
+</form>
+</body>
+</html>

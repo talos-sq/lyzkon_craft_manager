@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Craft Manager</title>
+
+    <link rel="stylesheet" href="{% static 'style/style.css' %}"/>
+</head>
+<body>
+<p>----------------------------------------------------------------</p>
+<h3><a href="/">Menu Główne</a> - <a href="/lab_list/">Spis Labów</a> - <a href="/new_craft/">Nowy Craft</a></h3>
+<p>----------------------------------------------------------------</p>
+<h1>Akredytacja przedmiotu laboratoryjnego</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="lab">Laboratorium:</label>
+    <select id="lab" name="lab">
+        {% for lab in labs %}
+            <option value={{ lab.name }}>{{ lab.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="item">Przedmiot:</label>
+    <select id="item" name="item">
+        <option value="threaded_bottle200">Butla z gwintem i nakrętką <200 ml</option>
+        <option value="threaded_bottle200500">Butla z gwintem i nakrętką 200-500 ml</option>
+        <option value="threaded_bottle500">Butla z gwintem i nakrętką >500 ml</option>
+        <option value="cylinder_with_spigot">Butla z króćcem szklanym</option>
+        <option value="high_cylinder_with_plug">Cylinder wysoki z korkiem</option>
+        <option value=flat_flask>Kolba okrągła z płaskim dnem <500 ml</option>
+        <option value=flat_flask500>Kolba okrągła z płaskim dnem 500 ml</option>
+        <option value="conical_flask200">Kolba stożkowa <200 ml</option>
+        <option value="conical_flask200500">Kolba stożkowa 200-500 ml</option>
+        <option value="conical_flask500">Kolba stożkowa >500 ml</option>
+        <option value="crystalizer">Krystalizator</option>
+        <option value="funnel">Lejek</option>
+        <option value="pipette">Pipeta/Końcówki - różne rodzaje</option>
+        <option value="test_tube">Próbówka - różne rodzaje</option>
+        <option value="petri_dish">Szalka Petriego</option>
+        <option value="watch_glass">Szkło zegarowe</option>
+        <option value="beaker100">Zlewka <100 ml</option>
+        <option value="beaker100250">Zlewka 100-250 ml</option>
+        <option value="beaker250">Zlewka >250 ml</option>
+    </select>
+
+    <input type="submit" value="Dodaj">
+
+</form>
+</body>
+</html>
